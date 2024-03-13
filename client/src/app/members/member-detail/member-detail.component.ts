@@ -40,17 +40,7 @@ export class MemberDetailComponent implements OnInit {
         small: photo.url,
         medium: photo.url,
         big: photo.url
-      }) 
-      imageUrls.push({
-        small: 'https://randomuser.me/api/portraits/lego/3.jpg',
-        medium: 'https://randomuser.me/api/portraits/lego/3.jpg',
-        big: 'https://randomuser.me/api/portraits/lego/3.jpg'
-      }) 
-      imageUrls.push({
-        small: 'https://randomuser.me/api/portraits/lego/5.jpg',
-        medium: 'https://randomuser.me/api/portraits/lego/5.jpg',
-        big: 'https://randomuser.me/api/portraits/lego/5.jpg'
-      })      
+      })        
     }
     return imageUrls;
   }
