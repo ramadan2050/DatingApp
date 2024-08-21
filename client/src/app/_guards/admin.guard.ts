@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../_services/account.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard {
-
+export class AdminGuard {
   constructor(private accountService: AccountService, private toastr: ToastrService) { }
 
   canActivate(): Observable<boolean> {
     return this.accountService.currentUser$.pipe(
       map(user => {
-        if (user) return true;
-        else {
-          this.toastr.error('You shall not pass!');
-          return false
+        if (!user) return false;
+        if(user.roles.includes('Admin') || user.roles.includes('Moderator')){
+          return true;
+        } else{
+          this.toastr.error('You cannot enter this area');
+          return false;
         }
       })
     );
